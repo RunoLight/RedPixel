@@ -1,8 +1,3 @@
-/**
-* PHP Email Form Validation - v3.2
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
 (function () {
   "use strict";
 
@@ -72,14 +67,17 @@
       }
     })
     .catch((error) => {
+      // CORS у гугла заблокирован поэтому они не могут отправить обратный запрос поэтому
+      // по итогу каждая успешная ошибка выдаст fetch error
       displayError(thisForm, error);
     });
   }
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
+    thisForm.querySelector('.sent-message').innerHTML = "Спасибо. Мы скоро с вами свяжемся.";
+    thisForm.querySelector('.sent-message').classList.add('d-block');
+    thisForm.querySelector('.submit-button').remove();
   }
 
 })();

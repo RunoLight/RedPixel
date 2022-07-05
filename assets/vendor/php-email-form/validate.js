@@ -52,7 +52,7 @@
     var json = JSON.stringify(object);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://18.197.86.39/form', true);
+    xhr.open("POST", 'http://18.197.86.39/form', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
     xhr.onreadystatechange = function() { //Вызывает функцию при смене состояния.

@@ -45,32 +45,27 @@
   });
 
   function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
-    })
-    .then(response => {
-      if( response.ok ) {
-        return response.text()
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
-    })
-    .then(data => {
-      thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-      } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-      }
-    })
-    .catch((error) => {
-      // CORS у гугла заблокирован поэтому они не могут отправить обратный запрос поэтому
-      // по итогу каждая успешная ошибка выдаст fetch error
-      displayError(thisForm, error);
+    var object = {};
+    formData.forEach(function(value, key){
+      object[key] = value;
     });
+    var json = JSON.stringify(object);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://18.197.86.39/form', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    xhr.onreadystatechange = function() { //Вызывает функцию при смене состояния.
+      if(xhr.readyState === XMLHttpRequest.DONE) {
+        // Запрос завершён. Здесь можно обрабатывать результат.
+        thisForm.querySelector('.loading').classList.remove('d-block');
+        thisForm.querySelector('.sent-message').innerHTML = "Спасибо. Мы скоро с вами свяжемся.";
+        thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.querySelector('.submit-button').remove();
+      }
+    }
+
+    xhr.send(json);
   }
 
   function displayError(thisForm, error) {
@@ -79,5 +74,4 @@
     thisForm.querySelector('.sent-message').classList.add('d-block');
     thisForm.querySelector('.submit-button').remove();
   }
-
 })();

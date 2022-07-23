@@ -11,11 +11,33 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Дамп структуры для таблица redpixel.feedback
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- Дамп данных таблицы redpixel.feedback: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
 INSERT INTO `feedback` (`id`, `name`, `email`, `phone`, `description`) VALUES
 	(1, 'Rbhbkk', '2@asd.ru', '123123123123', 'asd');
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
+
+-- Дамп структуры для таблица redpixel.projects
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `link_title` varchar(255) DEFAULT NULL,
+  `type` varchar(20) DEFAULT 'game' COMMENT 'set one from list - [''game'', ''app'', ''web'', ''bots'']',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Дамп данных таблицы redpixel.projects: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;

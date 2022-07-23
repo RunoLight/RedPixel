@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `phone` varchar(20) DEFAULT NULL,
   `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Дамп данных таблицы redpixel.feedback: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `link_title` varchar(255) DEFAULT NULL,
   `type` varchar(20) DEFAULT 'game' COMMENT 'set one from list - [''game'', ''app'', ''web'', ''bots'']',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Дамп данных таблицы redpixel.projects: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
